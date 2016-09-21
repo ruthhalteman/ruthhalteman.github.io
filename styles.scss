@@ -7,6 +7,16 @@ body {
 	margin: 0;
 	height: 100%;
 }
+#page {
+	opacity: 0;
+	transition:all 1s ease 0s;
+	-webkit-transition:all 1s ease 0s;
+	-moz-transition:all 1s ease 0s;
+	-o-transition:all 1s ease 0s;
+}
+#page.displayed {
+	opacity: 1;
+}
 .header {
 	background: linear-gradient(lighten(#30505c, 15%), #30505c);
 	width: 100%;
