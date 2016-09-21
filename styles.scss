@@ -60,6 +60,7 @@ body {
 	background-color: #eee;
 	margin: 0;
 	#icon-row {
+		width: 100%;
 			a {
 				color: #777;
 				padding-right: 15px;
@@ -68,6 +69,12 @@ body {
 				color: #ff5f32;
 			}
 		}
+	.picture-description {
+		text-align: right;
+		margin-top: -15px;
+		font-size: 10px;
+		color: #555;
+	}
 }
 
 h1 {
