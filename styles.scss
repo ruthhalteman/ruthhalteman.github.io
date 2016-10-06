@@ -77,6 +77,12 @@ body {
 	}
 }
 
+.footer#photo_footer {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+}
+
 h1 {
 	color: #777;
 	font-weight: regular;
@@ -90,6 +96,9 @@ p {
 }
 a {
 	color: #ff5f32;
+	text-decoration: none;
+}
+a:hover {
 	text-decoration: none;
 }
 .test-div {
