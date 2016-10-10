@@ -59,6 +59,17 @@ body {
 	padding: 25px;
 	margin-top: 80px;
 }
+#big-image {
+	width: auto;
+	height: 500px;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image: url('../img/svartifoss.jpg');
+}
+.modal-dialog{
+	width: 80%;
+}
 
 .photo-header {
 	padding: 20px 25px 20px 25px;

@@ -5,4 +5,11 @@
 
 $( window ).load(function() {
   $('#page').addClass('displayed');
+
 });
+
+$('.thumbnail').click(function (event) {
+  var button = $(this); // Button that triggered the modal
+  var recipient = button.data('whatever'); // Extract info from data-* attributes
+  $('#big-image').css('background-image', 'url("../img/'+recipient+'.jpg")');
+}); 
