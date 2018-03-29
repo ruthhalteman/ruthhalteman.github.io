@@ -109,6 +109,31 @@ body {
 	}
 }
 
+.photo-content {
+	margin-bottom: 60px;
+	.flex-images {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		a {
+			width:250px;
+			height:250px;
+			margin: 10px;
+			background-position: center;
+			background-size: cover;
+			-webkit-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.15);
+			-moz-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.15);
+			box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.15);
+			 -webkit-transition: all 0.25s ease-out;
+  			-moz-transition: all 0.25s ease-out;
+  			transition: all 0.25s ease-out;
+			&:hover {
+				border: 1px solid #aaa;
+			}
+		}
+	}
+}
+
 .footer#photo_footer {
 	position: fixed;
 	bottom: 0px;
@@ -143,10 +168,14 @@ a:hover {
 /************* Bears! ****************/
 body.bears {
 	background: #ecbb45;
+	color: #fff;
 	h1 {
 		color: #fff;
 	}
 	h2 {
+		color: #fff;
+	}
+	a {
 		color: #fff;
 	}
 	a.button {
@@ -174,5 +203,24 @@ body.bears {
 	}
 	#second-part{ 
 		opacity: 0;
+	}
+
+	.squares {
+		width: 100%;
+		div {
+			font-family: Arial, sans-serif;
+			border: 1px solid #fff;
+			&.active {
+				background: #fff;
+				color: #ecbb45;
+				font-weight: bold;
+			}
+		}
+		&.bear div {
+			border-bottom: 0px;
+		}
+		&.criminal div.active {
+			border-top: 1px solid #ecbb45;
+		}
 	}
 }
