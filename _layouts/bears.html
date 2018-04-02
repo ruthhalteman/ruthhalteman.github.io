@@ -11,8 +11,8 @@
 	</head>
 	<body id="page" class="bears">
 		<div class="container">
-			<div>
-				<h1>Roll to get started</h1>
+			<div class="row">
+				<h1 id="get-started" class="active">Roll to get started</h1>
 				<div class="dice">									
 					<img class="visible" src="/img/d6-random.svg">
 					<img src="/img/d6-one.svg">
@@ -23,8 +23,37 @@
 					<img src="/img/d6-six.svg">
 				</div>
 				<h2>You are <span id="descriptor"></span> <span id="bear-type"></span><span id="second-part">, the <span id="role"></span> of the operation.</span></h2>
-				<br><a class="button" id="reroll">Reroll</a>
+				<a class="button" id="reroll">Reroll</a>
+	
+				<div class="row" id="stat-table-section" style="margin-top: 30px;">
+					
+				<div class="col-xs-2">
+				criminal <br><a id="criminal-plus"><i class="fa fa-plus-square"></i></a> <a id="criminal-minus"><i class="fa fa-minus-square"></i></a></div><div class="col-xs-8">
+				<table class="squares-table">
+					<tr class="squares bear">
+						<td>0</td>
+						<td>1</td>
+						<td>2</td>
+						<td class="active">3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+					</tr>
+					<tr class="squares criminal">
+						<td>6</td>
+						<td>5</td>
+						<td>4</td>
+						<td class="active">3</td>
+						<td>2</td>
+						<td>1</td>
+						<td>0</td>
+					</tr>
+				</table>
 			</div>
+				<div class="col-xs-2">
+				bear <br><a id="bear-plus"><i class="fa fa-plus-square"></i></a> <a id="bear-minus"><i class="fa fa-minus-square"></i></a></div>
+			</div>
+		</div>
 		</div>
 	</body>
 </html>

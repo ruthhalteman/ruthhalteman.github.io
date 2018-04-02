@@ -55,22 +55,6 @@ body {
 	}
 }
 
-.photo-content {
-	padding: 25px;
-	margin-top: 80px;
-}
-#big-image {
-	width: auto;
-	height: 500px;
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-image: url('../img/svartifoss.jpg');
-}
-.modal-dialog{
-	width: 80%;
-}
-
 .photo-header {
 	padding: 20px 25px 20px 25px;
 	background-color: #eee;
@@ -111,6 +95,8 @@ body {
 
 .photo-content {
 	margin-bottom: 60px;
+	padding: 10px;
+	margin-top: 80px;
 	.flex-images {
 		display: flex;
 		flex-wrap: wrap;
@@ -186,6 +172,10 @@ body.bears {
 		&:hover {
 			cursor: pointer;
 		}
+		&#reroll {
+			float: right;
+			margin-top: -45px;
+		}
 	}
 	.dice {
 		max-width: 100px;
@@ -201,25 +191,30 @@ body.bears {
 			}		
 		}
 	}
-	#second-part{ 
+
+	#get-started:not(.active), #second-part:not(.active), #stat-table-section:not(.active) { 
 		opacity: 0;
 	}
 
+	.squares-table {
+		width: 100%;
+	}
 	.squares {
 		width: 100%;
-		div {
+		td {
 			font-family: Arial, sans-serif;
 			border: 1px solid #fff;
+			text-align: center;
 			&.active {
 				background: #fff;
 				color: #ecbb45;
 				font-weight: bold;
 			}
 		}
-		&.bear div {
+		&.bear td {
 			border-bottom: 0px;
 		}
-		&.criminal div.active {
+		&.criminal td.active {
 			border-top: 1px solid #ecbb45;
 		}
 	}

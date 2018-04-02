@@ -29,6 +29,8 @@ var roles = [
 	'face'
 ];
 
+var statCount = 4;
+
 var stage = 0;
 
 function roll_dice() {
@@ -45,6 +47,7 @@ $( window ).load(function() {
 		if (stage == 0) {
 			var result = roll_dice();
 			$('#descriptor').text(descriptors[result-2][1]+" "+descriptors[result-2][0]);
+			$('#get-started').removeClass('active');
 			stage = 1;
 		} else if (stage == 1) {
 			var result = roll_dice();
@@ -53,7 +56,8 @@ $( window ).load(function() {
 		} else if (stage == 2) {
 			var result = roll_dice();
 			$('#role').text(roles[result-2]);
-			$('#second-part').css('opacity', 1);
+			$('#second-part').addClass('active');
+			$('#stat-table-section').addClass('active');
 			stage = 3;
 		} else if (stage == 3) {
 
@@ -61,11 +65,31 @@ $( window ).load(function() {
 	});
 
 	$('#reroll').click(function (event){
+		$('#get-started').addClass('active');
 		$('.dice img').removeClass('visible');
 		$('.dice :first-child').toggleClass('visible');
-		$('#second-part').css('opacity', 0);
+		$('#second-part').removeClass('active');
 		$('#role, #bear-type, #descriptor').text('');
+
 		stage = 0;
+	});
+
+	$('#bear-plus, #criminal-minus').click(function (event) {
+		$('.squares.bear td:nth-child('+statCount+'), .squares.criminal td:nth-child('+statCount+')').removeClass('active');
+		statCount++;
+		$('.squares.bear td:nth-child('+statCount+'), .squares.criminal td:nth-child('+statCount+')').addClass('active');
+		if (statCount == 7){
+			alert('Gone feral. You\'re out!');
+		}
+	});
+
+	$('#bear-minus, #criminal-plus').click(function (event) {
+		$('.squares.bear td:nth-child('+statCount+'), .squares.criminal td:nth-child('+statCount+')').removeClass('active');
+		statCount--;
+		$('.squares.bear td:nth-child('+statCount+'), .squares.criminal td:nth-child('+statCount+')').addClass('active');
+		if (statCount == 1){
+			alert('Your criminal mastermindedness knows no bounds. You abandon your team to go start your life of crime. You\'re out!');
+		}
 	});
 
 });
@@ -75,4 +99,3 @@ $('.thumbnail').click(function (event) {
   var recipient = button.data('whatever'); // Extract info from data-* attributes
   $('#big-image').css('background-image', 'url("../img/'+recipient+'.jpg")');
 });
-
