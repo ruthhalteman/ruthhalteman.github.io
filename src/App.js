@@ -8,7 +8,7 @@ import {
   ProductOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, ConfigProvider } from "antd";
-const { Sider } = Layout;
+const { Sider, Content } = Layout;
 
 function App() {
   const [collapsed, setCollapsed] = React.useState(false);
@@ -18,16 +18,16 @@ function App() {
   const items = [
     { label: "Home", key: "/", icon: <HomeFilled /> },
 
-    { label: "Resume", key: "resume", icon: <FileTextOutlined /> },
     { label: "Projects", key: "/projects", icon: <CodeOutlined /> },
-    {
-      label: "Tutorials",
-      icon: <ProductOutlined />,
-      children: [
-        { key: "/tutorials/duvet", label: "Duvet cover" },
-        { key: "/tutorials/bee-block", label: "Quilt Block" },
-      ],
-    },
+    { label: "Resume", key: "resume", icon: <FileTextOutlined /> },
+    // {
+    //   label: "Tutorials",
+    //   icon: <ProductOutlined />,
+    //   children: [
+    //     { key: "/tutorials/duvet", label: "Duvet cover" },
+    //     { key: "/tutorials/bee-block", label: "Quilt Block" },
+    //   ],
+    // },
   ];
 
   return (
@@ -37,6 +37,7 @@ function App() {
           colorPrimary: "#3bbab8",
           colorTextBase: "#09262a",
           colorBgBase: "#f1fcfa",
+          colorLink: "#26a6a6",
         },
       }}
     >
@@ -67,9 +68,13 @@ function App() {
             }}
           />
         </Sider>
-        <Layout>
+        <Content
+          style={{
+            padding: "0 48px",
+          }}
+        >
           <Outlet />
-        </Layout>
+        </Content>
       </Layout>
     </ConfigProvider>
   );
