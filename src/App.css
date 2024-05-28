@@ -1,0 +1,22 @@
+:root {
+  --50: #f1fcfa;
+  --100: #d1f6f2;
+  --200: #a3ece6;
+
+  --300: #6ddbd6;
+  --400: #3bbab8;
+  --500: #26a6a6;
+  --600: #1b8486;
+  --700: #1a686b;
+  --800: #195356;
+  --900: #194648;
+  --950: #09262a;
+  background-color: var(--50);
+}
+.App {
+  text-align: center;
+  padding: 25px;
+  display: flex;
+
+  color: var(--950);
+}
