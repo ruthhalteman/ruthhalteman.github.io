@@ -1,22 +1,19 @@
-import logo from "./logo.svg";
 import * as React from "react";
 import "./App.css";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import {
   CodeOutlined,
   FileTextOutlined,
   HomeFilled,
-  LinkOutlined,
   ProductOutlined,
 } from "@ant-design/icons";
-import { Button, ConfigProvider, Space } from "antd";
-
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-const { Header, Content, Footer, Sider } = Layout;
+import { Layout, Menu, ConfigProvider } from "antd";
+const { Sider } = Layout;
 
 function App() {
   const [collapsed, setCollapsed] = React.useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const items = [
     { label: "Home", key: "/", icon: <HomeFilled /> },
@@ -57,7 +54,7 @@ function App() {
           <div className="demo-logo-vertical" />
           <Menu
             theme="light"
-            defaultSelectedKeys={["/"]}
+            defaultSelectedKeys={[location.pathname]}
             mode="inline"
             items={items}
             onSelect={(item) => {

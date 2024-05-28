@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Typography, Layout } from "antd";
 const { Title } = Typography;
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 
 export const Home = () => {
   return (
