@@ -7,7 +7,7 @@ const { Title, Text } = Typography;
 export const Calculators = () => {
   const [quiltWidth, setQuiltWidth] = useState(null);
   const [quiltLength, setQuiltLength] = useState(null);
-  const [isMeasuredByBlocks, setIsMeasuredByBlocks] = useState(false);
+  const [isMeasuredByBlocks, setIsMeasuredByBlocks] = useState(true);
   const [blockSize, setBlockSize] = useState(null);
   const [quiltBlockWidth, setQuiltBlockWidth] = useState(null);
   const [quiltBlockLength, setQuiltBlockLength] = useState(null);
@@ -23,7 +23,9 @@ export const Calculators = () => {
   const borderStripCount = borderisAdditive
     ? Math.ceil((quiltLength * 2 + quiltWidth * 2 + border * 4) / 42)
     : Math.ceil(
-        ((quiltLength - border) * 2 + (quiltWidth - border) * 2 + border * 4) /
+        ((quiltLength - border * 2) * 2 +
+          (quiltWidth - border * 2) * 2 +
+          border * 4) /
           assumedFabricWidth
       );
 
@@ -62,7 +64,7 @@ export const Calculators = () => {
             }
           }}
           style={{ width: 240 }}
-          min={1}
+          min={isMeasuredByBlocks ? 1 : 10}
         />
         <InputNumber
           addonBefore="Quilt Length"
@@ -78,7 +80,7 @@ export const Calculators = () => {
             }
           }}
           style={{ width: 240 }}
-          min={1}
+          min={isMeasuredByBlocks ? 1 : 10}
         />
 
         <Button
@@ -101,8 +103,8 @@ export const Calculators = () => {
       >
         <Radio.Group
           options={[
-            { label: "Specify inches", value: false },
             { label: "Specify blocks", value: true },
+            { label: "Specify inches", value: false },
           ]}
           value={isMeasuredByBlocks}
           onChange={({ target: { value } }) => {
@@ -206,7 +208,7 @@ export const Calculators = () => {
 
         {border && quiltLength && quiltWidth && (
           <Text>
-            {getYardage(borderStripCount, border)} needed, cut{" "}
+            {getYardage(borderStripCount, border + 0.5)} needed, cut{" "}
             {borderStripCount} strip{borderStripCount > 1 ? "s" : ""}
           </Text>
         )}
@@ -223,6 +225,37 @@ export const Calculators = () => {
           setBorderisAdditive(value);
         }}
       />
+      {quiltLength > 10 && quiltWidth > 10 && (
+        <>
+          <Title level={3}>Ratio visualization</Title>
+          <div
+            style={{
+              width: 300,
+              height: (300 * quiltLength) / quiltWidth,
+              outline: binding
+                ? `${((binding / 5) * 300) / quiltWidth}px solid #1b8486`
+                : "1px solid black",
+              boxSizing: "content-box",
+              border: border
+                ? `${(border * 300) / quiltWidth}px solid #3bbab8`
+                : "none",
+              marginBottom: 20,
+            }}
+          >
+            {isMeasuredByBlocks && blockSize && (
+              <table>
+                {Array.from({ length: quiltBlockLength }).map((_, i) => (
+                  <tr>
+                    {Array.from({ length: quiltBlockWidth }).map((_, i) => (
+                      <td></td>
+                    ))}
+                  </tr>
+                ))}
+              </table>
+            )}
+          </div>
+        </>
+      )}
     </Layout>
   );
 };
