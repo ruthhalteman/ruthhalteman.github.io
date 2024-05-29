@@ -7,6 +7,10 @@ const { Title, Text } = Typography;
 export const Calculators = () => {
   const [quiltWidth, setQuiltWidth] = useState(null);
   const [quiltLength, setQuiltLength] = useState(null);
+  const [isMeasuredByBlocks, setIsMeasuredByBlocks] = useState(false);
+  const [blockSize, setBlockSize] = useState(null);
+  const [quiltBlockWidth, setQuiltBlockWidth] = useState(null);
+  const [quiltBlockLength, setQuiltBlockLength] = useState(null);
   const [binding, setBinding] = useState(null);
   const [border, setBorder] = useState(null);
   const [borderisAdditive, setBorderisAdditive] = useState(true);
@@ -28,36 +32,99 @@ export const Calculators = () => {
       <Title>Some Handy Tools</Title>
       <Text>This all uses a conservative estimate of 42" fabric width</Text>
       <br />
-      <Layout style={{ display: "flex", flexDirection: "row", gap: 20 }}>
+      <Layout
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 20,
+          flexWrap: "wrap",
+        }}
+      >
         <InputNumber
           addonBefore="Quilt Width"
-          addonAfter="inches"
-          value={quiltWidth}
+          addonAfter={isMeasuredByBlocks ? "blocks" : "inches"}
+          value={isMeasuredByBlocks ? quiltBlockWidth : quiltWidth}
           onChange={(value) => {
-            setQuiltWidth(value);
+            if (isMeasuredByBlocks) setQuiltBlockWidth(value);
+            if (isMeasuredByBlocks && blockSize) {
+              setQuiltWidth(value * blockSize);
+            } else setQuiltWidth(value);
           }}
           style={{ width: 240 }}
           min={1}
         />
         <InputNumber
           addonBefore="Quilt Length"
-          addonAfter="inches"
-          value={quiltLength}
+          addonAfter={isMeasuredByBlocks ? "blocks" : "inches"}
+          value={isMeasuredByBlocks ? quiltBlockLength : quiltLength}
           onChange={(value) => {
-            setQuiltLength(value);
+            if (isMeasuredByBlocks) setQuiltBlockLength(value);
+            if (isMeasuredByBlocks && blockSize) {
+              setQuiltLength(value * blockSize);
+            } else setQuiltLength(value);
           }}
           style={{ width: 240 }}
           min={1}
-        />{" "}
+        />
+
         <Button
           onClick={() => {
             setQuiltWidth(null);
             setQuiltLength(null);
+            setQuiltBlockLength(null);
+            setQuiltBlockWidth(null);
+            setBlockSize(null);
           }}
         >
           Clear
         </Button>
       </Layout>
+      <br />
+      <Layout
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 20,
+          alignItems: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        <Radio.Group
+          options={[
+            { label: "Specify inches", value: false },
+            { label: "Specify blocks", value: true },
+          ]}
+          value={isMeasuredByBlocks}
+          onChange={({ target: { value } }) => {
+            setIsMeasuredByBlocks(value);
+            setBorderisAdditive(true);
+          }}
+        />
+        {isMeasuredByBlocks && (
+          <InputNumber
+            addonBefore="Finished block size"
+            addonAfter="inches"
+            value={blockSize}
+            onChange={(value) => {
+              setBlockSize(value);
+              if (quiltBlockWidth) setQuiltWidth(quiltBlockWidth * value);
+              if (quiltBlockLength) setQuiltLength(quiltBlockLength * value);
+            }}
+            step=".5"
+            style={{ width: 290 }}
+            min={1}
+          />
+        )}
+      </Layout>
+      <br />
+      {isMeasuredByBlocks &&
+        blockSize &&
+        quiltBlockWidth &&
+        quiltBlockLength && (
+          <Text>
+            Quilt dimensions: {quiltWidth}" x {quiltLength}"
+          </Text>
+        )}
       <Title level={4}>Binding</Title>
       <Layout
         style={{
@@ -137,16 +204,12 @@ export const Calculators = () => {
           { label: "Add to quilt dimensions", value: true },
           { label: "Part of quilt dimensions", value: false },
         ]}
+        disabled={isMeasuredByBlocks}
         value={borderisAdditive}
         onChange={({ target: { value } }) => {
           setBorderisAdditive(value);
         }}
       />
-      <br />
-      <Text>
-        Might need to adjust for seam allowance stuff to be accurate in all
-        cases. But if you round up this should all be fine
-      </Text>
     </Layout>
   );
 };
