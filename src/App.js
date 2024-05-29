@@ -26,7 +26,7 @@ function App() {
       icon: <ProductOutlined />,
       children: [
         { key: "/tutorials/duvet", label: "Duvet cover" },
-        { key: "/tutorials/bee-block", label: "Quilt Block" },
+        { key: "/tutorials/bee-block", label: "String Quilt" },
       ],
     },
     { label: "Links", key: "links", icon: <LinkOutlined /> },
@@ -73,6 +73,7 @@ function App() {
         <Content
           style={{
             padding: "0 48px",
+            maxWidth: 750,
           }}
         >
           <Outlet />

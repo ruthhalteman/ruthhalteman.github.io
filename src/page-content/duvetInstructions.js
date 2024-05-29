@@ -6,6 +6,7 @@ const { Title, Text } = Typography;
 export const Duvet = () => {
   const [duvetWidth, setDuvetWidth] = useState(null);
   const [duvetLength, setDuvetLength] = useState(null);
+
   const cutColumns = [
     { title: "Part", dataIndex: "part", key: "part" },
     { title: "Width", dataIndex: "width", key: "width" },
@@ -45,20 +46,37 @@ export const Duvet = () => {
       </Text>
       <Title level={2}>Materials</Title>
       <Text>
-        <b>Top:</b> You can use whatever you want (that would make any sense for
-        bedding). Some considerations are width and breathability.
+        <b>Top:</b> You can use whatever you want. Some considerations are
+        width, sturdiness (it'll get lots of use and washing), and
+        breathability.
       </Text>
       <br />
       <Text>
         <b> Underside:</b> You'll want this fabric to be softer and simpler, it
-        will be the one against your skin if you aren't using a seperate sheet.
+        will be the one against your skin if you aren't using a seperate top
+        sheet.
       </Text>
       <br />
       <Text>
-        <b>Optional Misc:</b> You can buy tape with snaps preinstalled along it
-        at fabric stores which makes the corner loops to hold the insert in
-        place very easy. Otherwise you can use some sort of twill tape or fabric
-        for a tie, or install snaps on them yourself.
+        If you're having trouble finding wide enough fabrics an easy way to go
+        is to use bedsheets. You can easily thrift them for cheap or buy a set
+        (often still cheaper than a duvet cover).
+      </Text>
+      <br />
+      <Text>
+        <b>Optional Misc:</b>
+        <ul>
+          <li>
+            You can buy tape with snaps preinstalled along it at fabric stores
+            which makes the corner loops that hold the insert in place very
+            easy. Otherwise you can use some sort of twill tape or fabric for a
+            tie, or install snaps on them yourself.
+          </li>
+          <li>
+            Buttons for closing the bottom opening. You might not need to bother
+            with them if the duvet isn't very wide
+          </li>
+        </ul>
       </Text>
       <Title level={3}>Cut one of each:</Title>
       <Table
@@ -70,22 +88,31 @@ export const Duvet = () => {
       <Text>
         <b>Or calculate for me:</b>
       </Text>
-      <Layout style={{ display: "flex", flexDirection: "row", gap: 20 }}>
+      <Layout
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 15,
+          flexWrap: "wrap",
+        }}
+      >
         <InputNumber
-          addonBefore="Duvet width"
+          addonBefore="Duvet width:"
           addonAfter="inches"
           value={duvetWidth}
           onChange={(value) => {
             setDuvetWidth(value);
           }}
+          style={{ width: 240 }}
         />
         <InputNumber
-          addonBefore="Duvet length"
+          addonBefore="Duvet length:"
           addonAfter="inches"
           value={duvetLength}
           onChange={(value) => {
             setDuvetLength(value);
           }}
+          style={{ width: 240 }}
         />
         <Button
           onClick={() => {
@@ -156,6 +183,7 @@ export const Duvet = () => {
             buttonholes along the underside hem.
           </li>
         </ol>
+        <br />
       </Text>
     </Layout>
   );
