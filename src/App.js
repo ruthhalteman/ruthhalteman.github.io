@@ -55,7 +55,7 @@ function App() {
           <div className="demo-logo-vertical" />
           <Menu
             theme="light"
-            defaultSelectedKeys={[location.pathname]}
+            selectedKeys={[location.pathname]}
             mode="inline"
             items={items}
             onSelect={(item) => {
