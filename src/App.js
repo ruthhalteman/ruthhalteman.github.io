@@ -26,8 +26,8 @@ function App() {
       label: "Tutorials",
       icon: <ProductOutlined />,
       children: [
-        { key: "/tutorials/duvet", label: "Duvet Cover" },
         { key: "/tutorials/bee-block", label: "Diagonal String Quilt" },
+        { key: "/tutorials/duvet", label: "Duvet Cover" },
       ],
     },
     { label: "Calculators", key: "/calculators", icon: <CalculatorOutlined /> },

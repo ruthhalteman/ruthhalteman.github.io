@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
+import { getYardage } from "./utils";
 import {
   Typography,
   Layout,
@@ -9,13 +10,6 @@ import {
   Col,
 } from "antd";
 const { Title, Text } = Typography;
-
-const getYardage = (strips, width) => {
-  const yardage = (strips * width) / 36;
-  return yardage < 0.25
-    ? `${strips * width}" long`
-    : `${yardage.toString().slice(0, 4)} yard${yardage > 1 ? "s" : ""}`;
-};
 
 export const BeeBlock = () => {
   const [widthBlocks, setWidthBlocks] = useState(null);
