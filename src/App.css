@@ -21,11 +21,11 @@
   color: var(--950);
 }
 
-table {
+table.calculatorVisualization {
   width: 100%;
   height: 100%;
   border-collapse: collapse;
 }
-table td {
+table.calculatorVisualization td {
   border: 1px solid var(--300);
 }

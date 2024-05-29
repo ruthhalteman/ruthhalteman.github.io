@@ -158,7 +158,7 @@ export const Calculators = () => {
           }}
           step=".25"
           style={{ width: 240 }}
-          min={1}
+          min={1.5}
           max={4}
         />
         {binding && quiltLength && quiltWidth && (
@@ -233,7 +233,7 @@ export const Calculators = () => {
               width: 300,
               height: (300 * quiltLength) / quiltWidth,
               outline: binding
-                ? `${((binding / 5) * 300) / quiltWidth}px solid #1b8486`
+                ? `${(((binding-0.5) / 3) * 300) / quiltWidth}px solid #1b8486`
                 : "1px solid black",
               boxSizing: "content-box",
               border: border
@@ -243,7 +243,7 @@ export const Calculators = () => {
             }}
           >
             {isMeasuredByBlocks && blockSize && (
-              <table>
+              <table className="calculatorVisualization">
                 {Array.from({ length: quiltBlockLength }).map((_, i) => (
                   <tr>
                     {Array.from({ length: quiltBlockWidth }).map((_, i) => (

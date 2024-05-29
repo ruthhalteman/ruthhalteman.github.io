@@ -20,7 +20,7 @@ function App() {
   const items = [
     { label: "Home", key: "/", icon: <HomeFilled /> },
 
-    { label: "Projects", key: "/projects", icon: <CodeOutlined /> },
+    // { label: "Projects", key: "/projects", icon: <CodeOutlined /> },
     { label: "Resume", key: "resume", icon: <FileTextOutlined /> },
     {
       label: "Tutorials",
@@ -31,7 +31,7 @@ function App() {
       ],
     },
     { label: "Calculators", key: "/calculators", icon: <CalculatorOutlined /> },
-    { label: "Links", key: "/links", icon: <LinkOutlined /> },
+    // { label: "Links", key: "/links", icon: <LinkOutlined /> },
   ];
 
   return (
