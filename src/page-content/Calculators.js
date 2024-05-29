@@ -27,6 +27,14 @@ export const Calculators = () => {
           assumedFabricWidth
       );
 
+  const clear = (clearBlockSize) => {
+    setQuiltWidth(null);
+    setQuiltLength(null);
+    setQuiltBlockLength(null);
+    setQuiltBlockWidth(null);
+    if (clearBlockSize) setBlockSize(null);
+  };
+
   return (
     <Layout>
       <Title>Some Handy Tools</Title>
@@ -75,11 +83,7 @@ export const Calculators = () => {
 
         <Button
           onClick={() => {
-            setQuiltWidth(null);
-            setQuiltLength(null);
-            setQuiltBlockLength(null);
-            setQuiltBlockWidth(null);
-            setBlockSize(null);
+            clear(true);
           }}
         >
           Clear
@@ -105,8 +109,7 @@ export const Calculators = () => {
             setIsMeasuredByBlocks(value);
             setBorderisAdditive(true);
             if (value) {
-              setQuiltBlockWidth(null);
-              setQuiltBlockLength(null);
+              clear(false);
             }
           }}
         />
