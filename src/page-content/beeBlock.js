@@ -195,11 +195,11 @@ export const BeeBlock = () => {
               <br />
               <b>Orange and Teal each</b>
               <br />
-              Light: {numLightStrips} strips
+              Light: {numLightStrips} strip{numLightStrips > 1 ? "s" : ""}
               <br />
-              Medium: {numMediumStrips} strips
+              Medium: {numMediumStrips} strip{numMediumStrips > 1 ? "s" : ""}
               <br />
-              Dark: {numDarkStrips} strips
+              Dark: {numDarkStrips} strip{numDarkStrips > 1 ? "s" : ""}
               <br />
               <br />
               Or just use scraps!
