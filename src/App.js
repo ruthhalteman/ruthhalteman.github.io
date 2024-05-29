@@ -2,6 +2,7 @@ import * as React from "react";
 import "./App.css";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import {
+  CalculatorOutlined,
   CodeOutlined,
   FileTextOutlined,
   HomeFilled,
@@ -25,11 +26,12 @@ function App() {
       label: "Tutorials",
       icon: <ProductOutlined />,
       children: [
-        { key: "/tutorials/duvet", label: "Duvet cover" },
-        { key: "/tutorials/bee-block", label: "String Quilt" },
+        { key: "/tutorials/duvet", label: "Duvet Cover" },
+        { key: "/tutorials/bee-block", label: "Diagonal String Quilt" },
       ],
     },
-    { label: "Links", key: "links", icon: <LinkOutlined /> },
+    { label: "Calculators", key: "/calculators", icon: <CalculatorOutlined /> },
+    { label: "Links", key: "/links", icon: <LinkOutlined /> },
   ];
 
   return (
@@ -58,7 +60,7 @@ function App() {
           <Menu
             theme="light"
             selectedKeys={[location.pathname]}
-            mode="inline"
+            mode="vertical"
             items={items}
             onSelect={(item) => {
               if (item.key === "resume") {

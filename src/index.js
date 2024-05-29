@@ -9,6 +9,7 @@ import { Duvet } from "./page-content/duvetInstructions";
 import { BeeBlock } from "./page-content/beeBlock";
 import { Projects } from "./page-content/Projects";
 import { Links } from "./page-content/Links";
+import { Calculators } from "./page-content/Calculators";
 
 const router = createHashRouter([
   {
@@ -40,6 +41,11 @@ const router = createHashRouter([
         path: "links",
         element: <Links />,
         loader: () => import("./page-content/Links"),
+      },
+      {
+        path: "calculators",
+        element: <Calculators />,
+        loader: () => import("./page-content/Calculators"),
       },
     ],
   },
