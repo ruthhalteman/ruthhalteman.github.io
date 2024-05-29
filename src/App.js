@@ -5,6 +5,7 @@ import {
   CodeOutlined,
   FileTextOutlined,
   HomeFilled,
+  LinkOutlined,
   ProductOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, ConfigProvider } from "antd";
@@ -20,14 +21,15 @@ function App() {
 
     { label: "Projects", key: "/projects", icon: <CodeOutlined /> },
     { label: "Resume", key: "resume", icon: <FileTextOutlined /> },
-    // {
-    //   label: "Tutorials",
-    //   icon: <ProductOutlined />,
-    //   children: [
-    //     { key: "/tutorials/duvet", label: "Duvet cover" },
-    //     { key: "/tutorials/bee-block", label: "Quilt Block" },
-    //   ],
-    // },
+    {
+      label: "Tutorials",
+      icon: <ProductOutlined />,
+      children: [
+        { key: "/tutorials/duvet", label: "Duvet cover" },
+        { key: "/tutorials/bee-block", label: "Quilt Block" },
+      ],
+    },
+    { label: "Links", key: "links", icon: <LinkOutlined /> },
   ];
 
   return (

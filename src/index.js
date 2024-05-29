@@ -8,6 +8,7 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import { Duvet } from "./page-content/duvetInstructions";
 import { BeeBlock } from "./page-content/beeBlock";
 import { Projects } from "./page-content/Projects";
+import { Links } from "./page-content/Links";
 
 const router = createHashRouter([
   {
@@ -34,6 +35,11 @@ const router = createHashRouter([
         path: "tutorials/bee-block",
         element: <BeeBlock />,
         loader: () => import("./page-content/beeBlock"),
+      },
+      {
+        path: "links",
+        element: <Links />,
+        loader: () => import("./page-content/Links"),
       },
     ],
   },
