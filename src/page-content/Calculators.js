@@ -45,10 +45,13 @@ export const Calculators = () => {
           addonAfter={isMeasuredByBlocks ? "blocks" : "inches"}
           value={isMeasuredByBlocks ? quiltBlockWidth : quiltWidth}
           onChange={(value) => {
-            if (isMeasuredByBlocks) setQuiltBlockWidth(value);
-            if (isMeasuredByBlocks && blockSize) {
-              setQuiltWidth(value * blockSize);
-            } else setQuiltWidth(value);
+            if (isMeasuredByBlocks) {
+              setQuiltBlockWidth(value);
+              if (blockSize) setQuiltWidth(value * blockSize);
+            } else {
+              setQuiltWidth(value);
+              setQuiltBlockWidth(null);
+            }
           }}
           style={{ width: 240 }}
           min={1}
@@ -58,10 +61,13 @@ export const Calculators = () => {
           addonAfter={isMeasuredByBlocks ? "blocks" : "inches"}
           value={isMeasuredByBlocks ? quiltBlockLength : quiltLength}
           onChange={(value) => {
-            if (isMeasuredByBlocks) setQuiltBlockLength(value);
-            if (isMeasuredByBlocks && blockSize) {
-              setQuiltLength(value * blockSize);
-            } else setQuiltLength(value);
+            if (isMeasuredByBlocks) {
+              setQuiltBlockLength(value);
+              if (blockSize) setQuiltLength(value * blockSize);
+            } else {
+              setQuiltLength(value);
+              setQuiltBlockLength(null);
+            }
           }}
           style={{ width: 240 }}
           min={1}
@@ -98,6 +104,10 @@ export const Calculators = () => {
           onChange={({ target: { value } }) => {
             setIsMeasuredByBlocks(value);
             setBorderisAdditive(true);
+            if (value) {
+              setQuiltBlockWidth(null);
+              setQuiltBlockLength(null);
+            }
           }}
         />
         {isMeasuredByBlocks && (
