@@ -46,6 +46,7 @@ export const Links = () => {
       <Title level={2}>Fav Resources</Title>
       <Title level={4}>Machine Knitting</Title>
       <Text>
+        <li><a href="https://mkmanuals.com/">Knitting machine manuals</a>: free downloads, has most models plus a bunch of old pattern books</li>
         <li>
           <a href="https://www.abstractknitfactoryfactory.com/">
             Machine knitting calculators
@@ -61,7 +62,7 @@ export const Links = () => {
         </li>
         <li>
           <a href="http://knitting.bikibird.com/jacquardform.html">
-            Jaquard punchard converter
+            Jacquard punchard converter
           </a>
           : convert a punchard design to different colorwork techniques
         </li>
