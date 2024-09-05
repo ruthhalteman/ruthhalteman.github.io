@@ -184,7 +184,7 @@ export const BeeBlock = () => {
               <br />
               or
               <br />
-              Jelly Roll strips or equivalent: {numWhiteStrips}
+              Jelly Roll (WOF) strips or equivalent: {numWhiteStrips}
               <br />
               <br />
               <b>Orange and Teal each</b>
