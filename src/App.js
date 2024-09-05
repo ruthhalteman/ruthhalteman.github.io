@@ -31,7 +31,7 @@ function App() {
       ],
     },
     { label: "Calculators", key: "/calculators", icon: <CalculatorOutlined /> },
-    // { label: "Links", key: "/links", icon: <LinkOutlined /> },
+    { label: "Links", key: "/links", icon: <LinkOutlined /> },
   ];
 
   return (
@@ -65,7 +65,7 @@ function App() {
             onSelect={(item) => {
               if (item.key === "resume") {
                 const a = document.createElement("a");
-                a.href = "/resume-quick.pdf";
+                a.href = "/RuthHaltemanResume.pdf";
                 a.download = "Ruth Halteman Resume";
                 a.click();
               } else navigate(item.key);
